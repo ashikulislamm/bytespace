@@ -25,13 +25,44 @@ export const categories: Category[] = [
   { id: "cooking", name: "Cooking", courseCount: 28 },
 ];
 
+export const homeCategoryRows = [
+  [
+    "Featured",
+    "Music",
+    "Drawing & Painting",
+    "Marketing",
+    "Animation",
+    "Social Media",
+    "UI/UX Design",
+    "Creative Marketing",
+  ],
+  [
+    "Digital Illustration",
+    "Film & Video",
+    "Crafts",
+    "Freelance & Entrepreneurship",
+    "Graphic Design",
+    "Photography",
+  ],
+  [
+    "Productivity",
+    "Web Development",
+    "Data Science",
+    "Cooking",
+  ],
+];
+
 export const featuredCategoryTabs = [
-  "Featured",
-  "Music",
-  "Drawing & Painting",
-  "Marketing",
-  "Animation",
-  "Social Media",
-  "UI/UX Design",
-  "Creative Marketing",
+  ...homeCategoryRows[0],
+  ...homeCategoryRows[1],
+  ...homeCategoryRows[2],
+];
+
+export const learningPaths = [
+  { id: "design", name: "Design" },
+  { id: "development", name: "Development" },
+  { id: "it-software", name: "IT & Software" },
+  { id: "business", name: "Business" },
+  { id: "marketing", name: "Marketing" },
+  { id: "photography", name: "Photography" },
 ];

@@ -160,7 +160,7 @@ export function Navbar({ variant = "auto", className }: NavbarProps) {
 
       {/* Mobile Drawer */}
       {mobileMenuOpen ? (
-        <div className="md:hidden fixed inset-x-0 top-[72px] bg-white border-b border-shuttle-200 shadow-xl p-6 transition-all">
+        <div className="md:hidden absolute top-full inset-x-0 bg-white border-b border-shuttle-200 shadow-xl p-6 transition-all z-50">
           <nav className="flex flex-col gap-4">
             {navLinks.map((link) => (
               <Link
