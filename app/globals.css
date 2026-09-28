@@ -1,26 +1,145 @@
+@import url('https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700&f[]=clash-display@600,700&display=swap');
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #FFFFFF;
+  --foreground: #242528;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+@theme {
+  /* Shuttle Gray (Neutral Slate) */
+  --color-shuttle-50: #F5F5F6;
+  --color-shuttle-100: #E5E6E8;
+  --color-shuttle-200: #CED0D3;
+  --color-shuttle-300: #ABAEB5;
+  --color-shuttle-400: #82868E;
+  --color-shuttle-500: #666973;
+  --color-shuttle-600: #585A62;
+  --color-shuttle-700: #4B4C53;
+  --color-shuttle-800: #424348;
+  --color-shuttle-900: #3A3B3F;
+  --color-shuttle-950: #242528;
+
+  /* Persian Blue (Signature Brand) */
+  --color-persian-50: #E7F6FF;
+  --color-persian-100: #D3EEFF;
+  --color-persian-200: #B0DDFF;
+  --color-persian-300: #81C5FF;
+  --color-persian-400: #4F9DFF;
+  --color-persian-500: #2872FF;
+  --color-persian-600: #0445FF;
+  --color-persian-700: #0043FF;
+  --color-persian-800: #003BE2;
+  --color-persian-900: #0B36A4;
+  --color-persian-950: #071E5F;
+
+  /* Electric Lime (High-Energy Accent) */
+  --color-lime-50: #FDFFE4;
+  --color-lime-100: #FAFFC5;
+  --color-lime-200: #F2FF92;
+  --color-lime-300: #E4FF54;
+  --color-lime-400: #D4FB20;
+  --color-lime-500: #CBFC01;
+  --color-lime-600: #8CB400;
+  --color-lime-700: #6A8902;
+  --color-lime-800: #546B09;
+  --color-lime-900: #465A0D;
+  --color-lime-950: #243300;
+
+  /* Secondary & Utility Colors */
+  --color-violet-600: #7A22EC;
+  --color-violet-950: #300B6A;
+  --color-black-200: #D1D1D1;
+  --color-black-400: #888888;
+  --color-black-700: #4F4F4F;
+  --color-black-950: #000000;
+
+  /* Typography Fonts */
+  --font-poppins: var(--font-poppins), 'Poppins', sans-serif;
+  --font-satoshi: 'Satoshi', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-clash: 'Clash Display', sans-serif;
+
+  /* Radii Tokens */
+  --radius-xs: 4px;
+  --radius-sm: 8px;
+  --radius-input: 12px;
+  --radius-media: 16px;
+  --radius-card: 24px;
+  --radius-pill: 100px;
+
+  /* Container Max Width */
+  --width-container: 1200px;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+/* Base Body Styles */
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-satoshi);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Custom Gradients */
+.bg-gradient-hero-dark {
+  background: linear-gradient(135deg, #4D4D4D 0%, #17181C 36%, #020202 100%);
+}
+
+.bg-gradient-specular {
+  background: linear-gradient(180deg, rgba(231, 231, 231, 0.05) 0%, rgba(231, 231, 231, 0.40) 33%, rgba(231, 231, 231, 0) 100%);
+}
+
+/* Reusable Container Utilities */
+.container-custom {
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+@media (min-width: 1280px) {
+  .container-custom {
+    padding-left: 0;
+    padding-right: 0;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* Smooth Card Elevation */
+.byte-shadow {
+  box-shadow: 
+    0.5px 0.7px 3px 0px rgba(0, 0, 0, 0.04),
+    2.2px 3.2px 5.7px 0px rgba(0, 0, 0, 0.06),
+    5.4px 7.7px 9.6px 0px rgba(0, 0, 0, 0.07),
+    10.2px 14.6px 16px 0px rgba(0, 0, 0, 0.08),
+    16.9px 24.2px 24px 0px rgba(0, 0, 0, 0.09);
+}
+
+.byte-card {
+  background-color: #FFFFFF;
+  border: 1px solid var(--color-shuttle-200);
+  border-radius: var(--radius-card);
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.byte-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 
+    0.5px 0.7px 3px 0px rgba(0, 0, 0, 0.04),
+    5.4px 7.7px 9.6px 0px rgba(0, 0, 0, 0.07),
+    16.9px 24.2px 24px 0px rgba(0, 0, 0, 0.09),
+    25.8px 36.9px 36px 0px rgba(0, 0, 0, 0.10);
+}
+
+/* Glassmorphism Frosted Backgrounds */
+.glass-frosted {
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  background: rgba(255, 255, 255, 0.85);
+}
+
+.glass-frosted-dark {
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  background: rgba(36, 37, 40, 0.80);
 }
