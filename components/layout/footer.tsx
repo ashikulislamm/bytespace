@@ -60,14 +60,14 @@ export function Footer() {
             </p>
 
             {/* Newsletter Subscription Form: Separate Pill Input + Lime "Search" Pill Button */}
-            <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row items-center gap-3 w-full">
+            <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row items-center gap-3 sm:gap-10 w-full">
               <input
                 type="email"
                 required
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="Enter your email"
-                className="w-full sm:w-[340px] h-[50px] bg-white border border-shuttle-300 rounded-full px-6 text-sm sm:text-base text-shuttle-950 placeholder:text-shuttle-400 focus:outline-none focus:border-persian-800 transition-colors"
+                className="w-full sm:w-[320px] h-[50px] bg-white border border-shuttle-300 rounded-full px-6 text-sm sm:text-base text-shuttle-950 placeholder:text-shuttle-400 focus:outline-none focus:border-persian-800 transition-colors"
               />
               <button
                 type="submit"
@@ -79,7 +79,7 @@ export function Footer() {
 
             <p className="text-xs text-shuttle-500 font-normal leading-normal mt-3 max-w-[440px]">
               By subscribing, you agree to our{" "}
-              <Link href="#" className="underline hover:text-persian-800">
+              <Link href="#" className="hover:text-lime-600 hover:transition-all">
                 Privacy Policy
               </Link>{" "}
               and consent to receive updates from our company.
