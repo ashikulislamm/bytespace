@@ -3,26 +3,28 @@
 import * as React from "react";
 import Link from "next/link";
 import { Logo } from "./logo";
-import { Button } from "@/components/ui/button";
 
 export function Footer() {
   const [email, setEmail] = React.useState("");
-  const [subscribed, setSubscribed] = React.useState(false);
+  const [submitted, setSubmitted] = React.useState(false);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (email.trim()) {
-      setSubscribed(true);
+      setSubmitted(true);
       setEmail("");
     }
   };
 
-  const browseLinks = [
+  const column1Links = [
     { label: "Featured Courses", href: "/courses" },
     { label: "Featured Categories", href: "/courses?category=Featured" },
     { label: "Business", href: "/courses?category=Business" },
     { label: "IT", href: "/courses?category=IT+%26+Software" },
     { label: "Design", href: "/courses?category=Design" },
+  ];
+
+  const column2Links = [
     { label: "Development", href: "/courses?category=Development" },
     { label: "Marketing", href: "/courses?category=Marketing" },
     { label: "Photography", href: "/courses?category=Photography" },
@@ -30,7 +32,7 @@ export function Footer() {
     { label: "Sport", href: "/courses" },
   ];
 
-  const platformLinks = [
+  const column3Links = [
     { label: "Become a Creator", href: "/#creator-cta" },
     { label: "Affiliate Program", href: "/courses" },
     { label: "Contact", href: "mailto:support@bytespace.com" },
@@ -45,38 +47,37 @@ export function Footer() {
   ];
 
   return (
-    <footer className="w-full bg-white border-t border-shuttle-100 pt-20 pb-12">
+    <footer className="w-full bg-white border-t border-shuttle-100 pt-16 sm:pt-20 pb-12">
       <div className="container-custom">
-        {/* Top Section: Newsletter and Link Columns */}
-        <div className="flex flex-col lg:flex-row justify-between gap-16 lg:gap-24">
-          {/* Left Column: Brand & Newsletter (EL-705f10d1, width: 528px) */}
-          <div className="w-full lg:max-w-[528px] flex flex-col gap-6">
+        {/* Top Section: Newsletter (Left) & 3 Link Columns (Right) Matching Figma 1:1 */}
+        <div className="flex flex-col lg:flex-row justify-between items-start gap-12 lg:gap-16 xl:gap-24">
+          {/* Left Column: Logo & Newsletter Subscription */}
+          <div className="w-full lg:max-w-[490px] flex flex-col">
             <Logo variant="dark" />
 
-            <p className="text-sm text-shuttle-950 leading-relaxed font-normal">
+            <p className="text-sm sm:text-base text-shuttle-900 leading-relaxed font-normal mt-6 mb-6">
               Stay Up to date with our latest features and releases by joining our newsletter.
             </p>
 
-            {/* Newsletter Subscription Form */}
-            <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-3">
+            {/* Newsletter Subscription Form: Separate Pill Input + Lime "Search" Pill Button */}
+            <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row items-center gap-3 w-full">
               <input
                 type="email"
                 required
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="Enter your email"
-                className="w-full sm:w-[359px] h-[52px] bg-white border border-shuttle-200 rounded-[12px] px-4 text-base text-shuttle-950 placeholder:text-shuttle-400 focus:outline-none focus:border-persian-800 focus:ring-2 focus:ring-persian-800/10 transition-all"
+                className="w-full sm:w-[340px] h-[50px] bg-white border border-shuttle-300 rounded-full px-6 text-sm sm:text-base text-shuttle-950 placeholder:text-shuttle-400 focus:outline-none focus:border-persian-800 transition-colors"
               />
-              <Button
+              <button
                 type="submit"
-                variant="primary"
-                className="h-[52px] px-8 rounded-[24px] shrink-0 font-medium text-base text-shuttle-950"
+                className="w-full sm:w-auto h-[50px] px-8 bg-[#CBFC01] hover:bg-[#b8e400] text-shuttle-950 font-semibold text-sm sm:text-base rounded-full transition-colors cursor-pointer shrink-0 select-none shadow-xs"
               >
-                {subscribed ? "Subscribed!" : "Search "}
-              </Button>
+                {submitted ? "Joined" : "Search"}
+              </button>
             </form>
 
-            <p className="text-xs text-shuttle-400 leading-normal">
+            <p className="text-xs text-shuttle-500 font-normal leading-normal mt-3 max-w-[440px]">
               By subscribing, you agree to our{" "}
               <Link href="#" className="underline hover:text-persian-800">
                 Privacy Policy
@@ -85,56 +86,60 @@ export function Footer() {
             </p>
           </div>
 
-          {/* Right Columns: Browse & Platform Links (EL-c309bf68) */}
-          <div className="grid grid-cols-2 gap-12 sm:gap-20 lg:gap-24">
-            {/* Column 1: Browse (EL-f04aec2d) */}
-            <div className="flex flex-col gap-5">
-              <h4 className="text-base font-semibold text-shuttle-950">
-                Browse
-              </h4>
-              <ul className="flex flex-col gap-3">
-                {browseLinks.map((link) => (
-                  <li key={link.label}>
-                    <Link
-                      href={link.href}
-                      className="text-sm text-shuttle-700 hover:text-persian-800 transition-colors"
-                    >
-                      {link.label}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
+          {/* Right Columns: 3 Clean Link Columns Without Headers Matching Figma Screenshot */}
+          <div className="w-full lg:w-auto grid grid-cols-2 sm:grid-cols-3 gap-8 sm:gap-12 lg:gap-16 xl:gap-20 pt-1 lg:pt-3">
+            {/* Column 1 */}
+            <ul className="flex flex-col gap-4 sm:gap-5">
+              {column1Links.map((link) => (
+                <li key={link.label}>
+                  <Link
+                    href={link.href}
+                    className="text-sm sm:text-[15px] text-shuttle-800 hover:text-persian-800 transition-colors font-normal whitespace-nowrap"
+                  >
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
 
-            {/* Column 2: Platform */}
-            <div className="flex flex-col gap-5">
-              <h4 className="text-base font-semibold text-shuttle-950">
-                Platform
-              </h4>
-              <ul className="flex flex-col gap-3">
-                {platformLinks.map((link) => (
-                  <li key={link.label}>
-                    <Link
-                      href={link.href}
-                      className="text-sm text-shuttle-700 hover:text-persian-800 transition-colors"
-                    >
-                      {link.label}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
+            {/* Column 2 */}
+            <ul className="flex flex-col gap-4 sm:gap-5">
+              {column2Links.map((link) => (
+                <li key={link.label}>
+                  <Link
+                    href={link.href}
+                    className="text-sm sm:text-[15px] text-shuttle-800 hover:text-persian-800 transition-colors font-normal whitespace-nowrap"
+                  >
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+
+            {/* Column 3 */}
+            <ul className="flex flex-col gap-4 sm:gap-5">
+              {column3Links.map((link) => (
+                <li key={link.label}>
+                  <Link
+                    href={link.href}
+                    className="text-sm sm:text-[15px] text-shuttle-800 hover:text-persian-800 transition-colors font-normal whitespace-nowrap"
+                  >
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
           </div>
         </div>
 
-        {/* Divider Line (EL-990de18a) */}
-        <div className="w-full h-px bg-shuttle-200 mt-16 mb-8" />
+        {/* Divider Line */}
+        <div className="w-full h-px bg-shuttle-200 mt-16 sm:mt-20 mb-8" />
 
-        {/* Bottom Bar: Copyright & Legal (EL-91644f66) */}
-        <div className="flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-shuttle-500">
+        {/* Bottom Bar: Copyright & Legal Links */}
+        <div className="flex flex-col sm:flex-row items-center justify-between gap-4 text-xs sm:text-sm text-shuttle-500 font-normal">
           <p>© 2023 ByteSpace. All rights reserved.</p>
 
-          <div className="flex items-center gap-6">
+          <div className="flex items-center gap-6 sm:gap-8">
             {legalLinks.map((link) => (
               <Link
                 key={link.label}

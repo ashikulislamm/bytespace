@@ -1,11 +1,8 @@
 import * as React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowUpRight, MessageSquare, Clock, BookOpen, Star } from "lucide-react";
 import type { Course } from "@/lib/types";
 import { cn } from "@/lib/utils";
-import { DifficultyBadge } from "@/components/ui/badge";
-import { AvatarStack } from "@/components/ui/avatar-stack";
 
 export interface CourseCardProps {
   course: Course;
@@ -13,16 +10,27 @@ export interface CourseCardProps {
   variant?: "default" | "compact";
 }
 
-export function CourseCard({ course, className, variant = "default" }: CourseCardProps) {
+export function CourseCard({ course, className }: CourseCardProps) {
+  // Use course student avatars or fallback to the 4 default authentic avatars
+  const avatars =
+    course.studentAvatars && course.studentAvatars.length > 0
+      ? course.studentAvatars.slice(0, 4)
+      : [
+          "/images/student-avatar-1.png",
+          "/images/student-avatar-3.png",
+          "/images/student-avatar-4.png",
+          "/images/student-avatar-5.png",
+        ];
+
   return (
     <div
       className={cn(
-        "group relative flex flex-col w-full bg-white border border-shuttle-200 rounded-[24px] p-4 transition-all duration-300 hover:-translate-y-1.5 hover:shadow-xl hover:border-shuttle-300",
+        "group relative flex flex-col w-full bg-white border border-shuttle-200/90 rounded-[28px] p-4 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:border-shuttle-300",
         className
       )}
     >
-      {/* Thumbnail Container */}
-      <div className="relative w-full h-[195px] rounded-[16px] overflow-hidden bg-shuttle-100 shrink-0">
+      {/* 1. Thumbnail Container with Bottom Floating Meta Badges */}
+      <div className="relative w-full h-[200px] sm:h-[210px] rounded-[20px] overflow-hidden bg-shuttle-100 shrink-0">
         <Image
           src={course.thumbnail}
           alt={course.title}
@@ -31,78 +39,102 @@ export function CourseCard({ course, className, variant = "default" }: CourseCar
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 373px"
         />
 
-        {/* Floating Meta Pill (Lessons | Duration | Comments) */}
-        <div className="absolute top-3 left-3 right-3 flex items-center justify-between px-3 py-1.5 rounded-[12px] bg-white/90 backdrop-blur-md border border-white/60 text-[11px] font-medium text-shuttle-900 shadow-sm">
-          <div className="flex items-center gap-1">
-            <BookOpen className="w-3.5 h-3.5 text-persian-800" />
-            <span>{course.lessonsCount} Lessons</span>
+        {/* Floating Meta Pills at the Bottom (3 Separate Capsules) */}
+        <div className="absolute bottom-3 left-2.5 right-2.5 flex items-center justify-between gap-1.5">
+          <div className="px-3 py-1.5 rounded-full bg-white/75 backdrop-blur-md text-[11px] sm:text-xs font-medium text-shuttle-800 shadow-xs whitespace-nowrap">
+            {course.lessonsCount} Lessons
           </div>
-          <span className="text-shuttle-300">•</span>
-          <div className="flex items-center gap-1">
-            <Clock className="w-3.5 h-3.5 text-persian-800" />
-            <span>{course.totalDuration}</span>
+          <div className="px-3 py-1.5 rounded-full bg-white/75 backdrop-blur-md text-[11px] sm:text-xs font-medium text-shuttle-800 shadow-xs whitespace-nowrap">
+            {course.totalDuration}
           </div>
-          <span className="text-shuttle-300">•</span>
-          <div className="flex items-center gap-1">
-            <MessageSquare className="w-3.5 h-3.5 text-persian-800" />
-            <span>{course.commentsCount}</span>
+          <div className="px-3 py-1.5 rounded-full bg-white/75 backdrop-blur-md text-[11px] sm:text-xs font-medium text-shuttle-800 shadow-xs whitespace-nowrap">
+            {course.commentsCount} Comments
           </div>
         </div>
       </div>
 
-      {/* Card Content */}
-      <div className="flex flex-col flex-1 pt-4">
-        {/* Course Title */}
-        <Link href={`/courses/${course.slug}`} className="focus:outline-none">
-          <h3 className="font-semibold text-lg text-shuttle-950 transition-colors duration-200 group-hover:text-persian-800 line-clamp-1">
-            {course.title}
-          </h3>
-        </Link>
+      {/* 2. Card Content */}
+      <div className="flex flex-col flex-1 pt-4 pb-1">
+        {/* Row 1: Title & Rating */}
+        <div className="flex items-start justify-between gap-3">
+          <div className="flex-1 min-w-0">
+            <Link href={`/courses/${course.slug}`} className="focus:outline-none block">
+              <h3 className="font-semibold text-lg sm:text-[20px] text-shuttle-950 font-poppins leading-snug transition-colors duration-200 group-hover:text-persian-800 line-clamp-1">
+                {course.title}
+              </h3>
+            </Link>
 
-        {/* Creator Byline */}
-        <p className="mt-1 text-sm text-shuttle-400">
-          by{" "}
-          <Link
-            href={`/creators/${course.creator.id}`}
-            className="text-persian-800 font-medium hover:underline transition-colors"
-          >
-            {course.creator.name.toLowerCase()}
-          </Link>
-        </p>
+            {/* Creator Byline */}
+            <p className="mt-1 text-xs sm:text-sm text-shuttle-400">
+              by{" "}
+              <Link
+                href={`/creators/${course.creator.id}`}
+                className="text-persian-800 font-medium hover:underline transition-colors"
+              >
+                {course.creator.name.toLowerCase()}
+              </Link>
+            </p>
+          </div>
 
-        {/* Difficulty & Students Stack Row */}
-        <div className="flex items-center justify-between mt-3 pt-3 border-t border-shuttle-100">
-          <DifficultyBadge level={course.difficulty} />
-          <AvatarStack avatars={course.studentAvatars} extraCount="26" size="sm" />
+          {/* Rating String with Silver Star */}
+          <div className="flex items-center gap-1 shrink-0 pt-0.5 select-none">
+            <span className="text-base sm:text-[18px] font-normal text-shuttle-600">
+              {course.rating.toFixed(1)}
+            </span>
+            <svg
+              className="w-4 h-4 fill-[#CED0D3] text-[#CED0D3] shrink-0"
+              viewBox="0 0 24 24"
+            >
+              <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
+            </svg>
+          </div>
         </div>
 
-        {/* Pricing & Rating Row */}
-        <div className="flex items-center justify-between mt-4 pt-3 border-t border-shuttle-100">
-          {/* Price */}
-          <div className="flex items-baseline gap-1">
-            <span className="text-2xl font-bold text-shuttle-950 tracking-tight">
-              ${course.price}
-            </span>
-            <span className="text-xs text-shuttle-500 font-medium">
-              {course.billingPeriod}
-            </span>
-          </div>
-
-          {/* Rating and Action Link */}
-          <div className="flex items-center gap-3">
-            <div className="flex items-center gap-1 text-xs font-semibold text-shuttle-800 bg-shuttle-50 px-2 py-1 rounded-full border border-shuttle-200">
-              <Star className="w-3.5 h-3.5 text-amber-400 fill-amber-400" />
-              <span>{course.rating.toFixed(1)}</span>
-            </div>
-
-            <Link
-              href={`/courses/${course.slug}`}
-              className="w-8 h-8 rounded-full bg-shuttle-50 hover:bg-persian-800 hover:text-white border border-shuttle-200 hover:border-transparent flex items-center justify-center text-shuttle-700 transition-all duration-200"
-              aria-label={`View ${course.title}`}
+        {/* Row 2: Difficulty Level Badge & Student Avatar Stack */}
+        <div className="flex items-center justify-between gap-3 mt-4">
+          {/* Difficulty Pill with 3 Stepping Signal Bars */}
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#F4F5F7] text-shuttle-800 text-xs sm:text-sm font-medium select-none">
+            <svg
+              className="w-3.5 h-3.5 text-shuttle-700 shrink-0"
+              viewBox="0 0 24 24"
+              fill="currentColor"
             >
-              <ArrowUpRight className="w-4 h-4" />
-            </Link>
+              <rect x="3" y="14" width="3.5" height="7" rx="1.5" />
+              <rect x="10" y="9" width="3.5" height="12" rx="1.5" />
+              <rect x="17" y="4" width="3.5" height="17" rx="1.5" />
+            </svg>
+            <span>{course.difficulty}</span>
           </div>
+
+          {/* Student Avatars Stack + Electric Lime 26+ Badge */}
+          <div className="flex items-center -space-x-1.5 sm:-space-x-2 shrink-0">
+            {avatars.map((avatar, idx) => (
+              <div
+                key={idx}
+                className="relative w-7 h-7 sm:w-8 sm:h-8 rounded-full overflow-hidden shrink-0"
+              >
+                <Image
+                  src={avatar}
+                  alt="Enrolled student"
+                  fill
+                  className="object-cover"
+                />
+              </div>
+            ))}
+            <div className="relative w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-[#CBFC01] text-shuttle-950 font-bold text-[11px] sm:text-xs flex items-center justify-center shrink-0 select-none">
+              26+
+            </div>
+          </div>
+        </div>
+
+        {/* Row 3: Price and Billing Period */}
+        <div className="flex items-baseline gap-1 mt-4">
+          <span className="text-2xl sm:text-[26px] font-bold text-persian-800 font-poppins tracking-tight">
+            ${course.price}
+          </span>
+          <span className="text-xs sm:text-sm text-shuttle-400 font-normal">
+            {course.billingPeriod}
+          </span>
         </div>
       </div>
     </div>
