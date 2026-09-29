@@ -26,7 +26,7 @@ export function HeroSection({ initialSearchQuery = "" }: HeroSectionProps) {
       {/* Floating 3D Vector Ornaments Matching media_1790621392253.png */}
 
       {/* 1. Far Top-Left: Neon Lime Spiral Ribbon (#1:1785) */}
-      <div className="absolute -left-12 sm:-left-8 lg:-left-6 top-8 sm:top-12 lg:top-16 w-[140px] sm:w-[190px] lg:w-[260px] pointer-events-none select-none z-10">
+      <div className="absolute -left-12 sm:-left-8 lg:-left-20 top-16 sm:top-12 lg:top-26 w-[240px] sm:w-[190px] lg:w-[360px] pointer-events-none select-none z-10">
         <Image
           src="/images/hero-lime-spiral.png"
           alt="Neon Lime Spiral Ribbon"
@@ -38,7 +38,7 @@ export function HeroSection({ initialSearchQuery = "" }: HeroSectionProps) {
       </div>
 
       {/* 2. Mid-Left: White Zigzag Ribbon (#1:1820) */}
-      <div className="absolute left-8 sm:left-24 lg:left-36 top-[28%] sm:top-[30%] lg:top-[32%] w-[70px] sm:w-[110px] lg:w-[150px] pointer-events-none select-none z-10">
+      <div className="absolute left-8 sm:left-24 lg:left-60 top-[16%] sm:top-[16%] lg:top-[38%] w-[70px] sm:w-[110px] lg:w-[150px] pointer-events-none select-none z-10">
         <Image
           src="/images/hero-white-zigzag.png"
           alt="White Zigzag Ribbon"
@@ -50,7 +50,7 @@ export function HeroSection({ initialSearchQuery = "" }: HeroSectionProps) {
       </div>
 
       {/* 3. Bottom-Left: White 3D Torus Donut (#1:1867) */}
-      <div className="absolute -left-10 sm:-left-6 lg:left-2 bottom-6 sm:bottom-10 lg:bottom-16 w-[140px] sm:w-[220px] lg:w-[320px] pointer-events-none select-none z-10">
+      <div className="absolute -left-10 sm:-left-6 lg:left-32 bottom-6 sm:bottom-10 lg:bottom-6 w-[140px] sm:w-[220px] lg:w-[320px] pointer-events-none select-none z-10">
         <Image
           src="/images/hero-white-torus.png"
           alt="White 3D Torus Donut"
@@ -62,7 +62,7 @@ export function HeroSection({ initialSearchQuery = "" }: HeroSectionProps) {
       </div>
 
       {/* 4. Far Top-Right: Neon Lime Cylinder (#1:1789) */}
-      <div className="absolute -right-14 sm:-right-10 lg:-right-8 top-6 sm:top-10 lg:top-12 w-[160px] sm:w-[240px] lg:w-[340px] pointer-events-none select-none z-10">
+      <div className="absolute -right-18 sm:-right-10 lg:-right-8 top-16 sm:top-10 lg:top-12 w-[160px] sm:w-[240px] lg:w-[340px] pointer-events-none select-none z-10">
         <Image
           src="/images/hero-lime-cylinder.png"
           alt="Neon Lime Cylinder"
@@ -74,7 +74,7 @@ export function HeroSection({ initialSearchQuery = "" }: HeroSectionProps) {
       </div>
 
       {/* 5. Mid-Right: White 3D Pyramid (#1:1819) */}
-      <div className="absolute right-12 sm:right-28 lg:right-44 top-[24%] sm:top-[26%] lg:top-[28%] w-[80px] sm:w-[130px] lg:w-[180px] pointer-events-none select-none z-10">
+      <div className="absolute -right-10 sm:right-28 lg:right-44 top-[24%] sm:top-[26%] lg:top-[28%] w-[80px] sm:w-[130px] lg:w-[180px] pointer-events-none select-none z-10">
         <Image
           src="/images/hero-white-pyramid.png"
           alt="White 3D Pyramid"
@@ -136,7 +136,7 @@ export function HeroSection({ initialSearchQuery = "" }: HeroSectionProps) {
       {/* Center Showcase: Vector Neon Lime Arch + Cutout Student + 3 Floating Cards (Pinned to Bottom) */}
       <div className="relative w-full max-w-[1020px] mx-auto flex-1 flex items-end justify-center z-10 overflow-visible mt-4">
         {/* Giant Neon Lime Arch / Ring (#1:1866: width 1149px, height 1149px, stroke 320px) */}
-        <div className="absolute left-1/2 -translate-x-1/2 top-[20px] sm:top-[20px] lg:top-[30px] w-[680px] h-[680px] sm:w-[880px] sm:h-[880px] lg:w-[1149px] lg:h-[1149px] pointer-events-none select-none z-0">
+        <div className="absolute left-1/2 -translate-x-1/2 top-[50px] sm:top-[20px] lg:top-[30px] w-[680px] h-[680px] sm:w-[880px] sm:h-[880px] lg:w-[1149px] lg:h-[1149px] pointer-events-none select-none z-0">
           <svg viewBox="0 0 1149 1149" className="w-full h-full" fill="none">
             <circle
               cx="574.5"
@@ -149,7 +149,7 @@ export function HeroSection({ initialSearchQuery = "" }: HeroSectionProps) {
         </div>
 
         {/* Floating Card 1: UI/UX Design (#46:126) */}
-        <div className="absolute left-2 sm:left-8 lg:left-[10%] xl:left-[14%] top-[18%] sm:top-[22%] bg-white/95 backdrop-blur-md rounded-2xl px-5 py-3 shadow-xl border border-white/80 z-20 text-left transition-transform hover:-translate-y-1 duration-200">
+        <div className="absolute left-2 sm:left-8 lg:left-[10%] xl:left-[14%] top-[2%] sm:top-[22%] bg-white/95 backdrop-blur-md rounded-2xl px-5 py-3 shadow-xl border border-white/80 z-20 text-left transition-transform hover:-translate-y-1 duration-200">
           <span className="text-sm font-semibold text-shuttle-950 block">UI/UX Design</span>
           <div className="flex items-center gap-1.5 text-xs text-shuttle-400 font-medium mt-0.5">
             <span>200 Courses</span>
@@ -159,7 +159,7 @@ export function HeroSection({ initialSearchQuery = "" }: HeroSectionProps) {
         </div>
 
         {/* Floating Card 2: Happy Students (#1:1821) Matching Figma Screenshot 1:1 */}
-        <div className="absolute left-2 sm:left-6 lg:left-[7%] xl:left-[5%] bottom-10 sm:bottom-14 lg:bottom-40 bg-white rounded-[20px] p-4 sm:p-[18px] shadow-2xl border border-white/90 z-20 text-left transition-transform hover:-translate-y-1 duration-200">
+        <div className="absolute left-2 sm:left-6 lg:left-[7%] xl:left-[5%] bottom-24 sm:bottom-14 lg:bottom-40 bg-white rounded-[20px] p-4 sm:p-[18px] shadow-2xl border border-white/90 z-20 text-left transition-transform hover:-translate-y-1 duration-200">
           {/* Title */}
           <h3 className="text-base sm:text-[17px] font-semibold text-shuttle-950 leading-tight">
             Happy Students
@@ -207,7 +207,7 @@ export function HeroSection({ initialSearchQuery = "" }: HeroSectionProps) {
         </div>
 
         {/* Floating Card 3: Learning Progress (#1:1797) */}
-        <div className="absolute right-2 sm:right-8 lg:right-[10%] xl:right-[25%] top-[18%] sm:top-[22%] bg-white/95 backdrop-blur-md rounded-2xl px-5 py-3.5 shadow-xl border border-white/80 z-20 text-left min-w-[170px] sm:min-w-[190px] transition-transform hover:-translate-y-1 duration-200">
+        <div className="absolute right-2 sm:right-8 lg:right-[10%] xl:right-[25%] top-[28%] sm:top-[22%] bg-white/95 backdrop-blur-md rounded-2xl px-5 py-3.5 shadow-xl border border-white/80 z-20 text-left min-w-[170px] sm:min-w-[190px] transition-transform hover:-translate-y-1 duration-200">
           <span className="text-xs font-medium text-shuttle-400 block">Learning Progress</span>
           <span className="text-2xl sm:text-3xl font-bold text-shuttle-950 mt-1 block">55%</span>
           <div className="w-full h-2 bg-shuttle-100 rounded-full mt-2 overflow-hidden">
@@ -216,7 +216,7 @@ export function HeroSection({ initialSearchQuery = "" }: HeroSectionProps) {
         </div>
 
         {/* Center Student Photo Cutout (#1:1796) Pinned to Bottom */}
-        <div className="relative z-10 w-[600px] sm:w-[440px] lg:w-[700px] xl:w-[800px] h-[640px] aspect-[1444/1378] select-none pointer-events-none">
+        <div className="relative z-10 w-[600px] sm:w-[440px] lg:w-[600px] xl:w-[700px] h-[600px] aspect-[1444/1378] select-none pointer-events-none">
           <Image
             src="/images/hero-student-laptop.png"
             alt="Student holding laptop with headphones"
