@@ -11,10 +11,10 @@ export function CreatorCtaSection() {
       className="relative w-full bg-persian-800 py-16 sm:py-24 lg:py-28 overflow-hidden select-none"
       style={{
         backgroundImage: `
-          linear-gradient(to right, rgba(255, 255, 255, 0.08) 1px, transparent 1px),
-          linear-gradient(to bottom, rgba(255, 255, 255, 0.08) 1px, transparent 1px)
+          linear-gradient(to right, rgba(255, 255, 255, 0.08) 2px, transparent 1px),
+          linear-gradient(to bottom, rgba(255, 255, 255, 0.08) 2px, transparent 1px)
         `,
-        backgroundSize: "80px 80px",
+        backgroundSize: "120px 120px",
       }}
     >
       {/* Floating 3D Ornaments */}
