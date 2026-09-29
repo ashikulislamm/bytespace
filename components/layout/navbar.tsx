@@ -67,7 +67,7 @@ export function Navbar({ variant = "auto", className }: NavbarProps) {
           <Logo variant={isLight && !scrolled ? "light" : "dark"} />
         </div>
 
-        {/* Center: Desktop Navigation Links with Animated Underline on Hover */}
+        {/* Center: Desktop Navigation Links with Smooth Color Transition */}
         <nav className="hidden md:flex items-center gap-10">
           {navLinks.map((link) => {
             const isActive =
@@ -76,18 +76,18 @@ export function Navbar({ variant = "auto", className }: NavbarProps) {
                 : pathname.startsWith(link.href);
 
             return (
-              <div key={link.href} className="relative group py-1">
+              <div key={link.href} className="relative py-1">
                 <Link
                   href={link.href}
                   className={cn(
-                    "text-base font-normal transition-all duration-200 select-none block",
+                    "text-base font-normal transition-colors duration-300 select-none block",
                     isLight && !scrolled
                       ? isActive
                         ? "text-white font-medium"
-                        : "text-white/90 group-hover:text-lime-400"
+                        : "text-white/90 hover:text-lime-800"
                       : isActive
                       ? "text-persian-800 font-semibold"
-                      : "text-shuttle-700 group-hover:text-persian-800"
+                      : "text-shuttle-700 hover:text-lime-800"
                   )}
                 >
                   {link.label}
@@ -99,40 +99,40 @@ export function Navbar({ variant = "auto", className }: NavbarProps) {
 
         {/* Right: Actions & Auth Triggers with Smooth Hover States */}
         <div className="hidden md:flex items-center gap-8">
-          {/* Sign In Link */}
+          {/* Login Link */}
           <Link
             href="/login"
             className={cn(
-              "text-base font-normal transition-all duration-200 select-none py-1 relative group hover:text-lime-400",
+              "text-base font-normal transition-colors duration-300 select-none py-1 relative block",
               isLight && !scrolled
-                ? "text-white group-hover:text-lime-400"
-                : "text-shuttle-800 group-hover:text-persian-800"
+                ? "text-white hover:text-lime-800"
+                : "text-shuttle-800 hover:text-lime-800"
             )}
           >
-            Sign In
+            Login
           </Link>
 
-          {/* Join Us Link */}
+          {/* Register Link */}
           <Link
             href="/register"
             className={cn(
-              "text-base font-normal transition-all duration-200 select-none py-1 relative group hover:text-lime-400",
+              "text-base font-normal transition-colors duration-300 select-none py-1 relative block",
               isLight && !scrolled
-                ? "text-white group-hover:text-lime-400"
-                : "text-shuttle-800 group-hover:text-persian-800"
+                ? "text-white hover:text-lime-800"
+                : "text-shuttle-800 hover:text-lime-800"
             )}
           >
-            Join Us
+            Register
           </Link>
 
-          {/* Shopping Bag Trigger with scale hover */}
+          {/* Shopping Bag Trigger with smooth hover */}
           <button
             type="button"
             className={cn(
-              "relative p-2 rounded-full transition-all duration-200 cursor-pointer hover:scale-110",
+              "relative p-2 rounded-full transition-colors duration-300 cursor-pointer",
               isLight && !scrolled
-                ? "text-white hover:text-lime-400"
-                : "text-shuttle-700 hover:text-persian-800"
+                ? "text-white hover:text-lime-800"
+                : "text-shuttle-700 hover:text-lime-800"
             )}
             aria-label="Shopping Cart"
           >
@@ -167,10 +167,10 @@ export function Navbar({ variant = "auto", className }: NavbarProps) {
                 key={link.href}
                 href={link.href}
                 className={cn(
-                  "text-lg font-medium py-2 px-3 rounded-lg transition-colors",
+                  "text-lg font-medium py-2 px-3 rounded-lg transition-colors duration-300",
                   pathname === link.href
                     ? "text-persian-800 bg-persian-50 font-semibold"
-                    : "text-shuttle-800 hover:bg-shuttle-50"
+                    : "text-shuttle-800 hover:text-lime-800 hover:bg-shuttle-50"
                 )}
               >
                 {link.label}
@@ -179,13 +179,13 @@ export function Navbar({ variant = "auto", className }: NavbarProps) {
 
             <div className="pt-4 border-t border-shuttle-100 flex flex-col gap-3">
               <Link href="/login" className="w-full">
-                <button type="button" className="w-full py-3 text-shuttle-950 font-medium hover:text-persian-800 transition-colors">
-                  Sign In
+                <button type="button" className="w-full py-3 text-shuttle-950 font-medium hover:text-lime-800 transition-colors duration-300">
+                  Login
                 </button>
               </Link>
               <Link href="/register" className="w-full">
-                <button type="button" className="w-full py-3 bg-lime-400 hover:bg-[#8CB400] text-shuttle-950 font-medium rounded-full transition-colors">
-                  Join Us
+                <button type="button" className="w-full py-3 bg-lime-400 hover:bg-lime-800 hover:text-white text-shuttle-950 font-medium rounded-full transition-colors duration-300">
+                  Register
                 </button>
               </Link>
             </div>
