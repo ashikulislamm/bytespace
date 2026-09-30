@@ -65,7 +65,7 @@ export function HeroSection({ initialSearchQuery = "" }: HeroSectionProps) {
       {/* Center Showcase: Cutout Student + 3 Floating Cards (Pinned to Bottom) */}
       <div className="relative w-full max-w-[1240px] mx-auto flex-1 flex items-end justify-center z-10 overflow-visible mt-4">
         {/* Floating Card 1: UI/UX Design (#46:126) */}
-        <div className="absolute left-2 sm:left-8 lg:left-[10%] xl:left-[14%] top-[35%] sm:top-[18%] lg:top-[22%] bg-white/95 backdrop-blur-md rounded-2xl px-4 sm:px-5 py-2.5 sm:py-3 shadow-xl border border-white/80 z-20 text-left transition-transform hover:-translate-y-1 duration-200 scale-90 sm:scale-100 origin-top-left">
+        <div className="absolute left-2 sm:left-8 lg:left-[15%] xl:left-[18%] top-[35%] sm:top-[18%] lg:top-[22%] bg-white/95 backdrop-blur-md rounded-2xl px-4 sm:px-5 py-2.5 sm:py-3 shadow-xl border border-white/80 z-20 text-left transition-transform hover:-translate-y-1 duration-200 scale-90 sm:scale-100 origin-top-left">
           <span className="text-xs sm:text-sm font-semibold text-shuttle-950 block">UI/UX Design</span>
           <div className="flex items-center gap-1.5 text-[10px] sm:text-xs text-shuttle-400 font-medium mt-0.5">
             <span>200 Courses</span>
@@ -75,7 +75,7 @@ export function HeroSection({ initialSearchQuery = "" }: HeroSectionProps) {
         </div>
 
         {/* Floating Card 2: Happy Students (#1:1821) Matching Figma Screenshot 1:1 */}
-        <div className="absolute left-2 sm:left-6 lg:left-[7%] xl:left-[10%] bottom-10 sm:bottom-14 lg:bottom-48 bg-white rounded-[18px] sm:rounded-[20px] p-3 sm:p-4 lg:p-[18px] shadow-2xl border border-white/90 z-20 text-left transition-transform hover:-translate-y-1 duration-200 scale-90 sm:scale-100 origin-bottom-left">
+        <div className="absolute left-2 sm:left-6 lg:left-[10%] xl:left-[13%] bottom-10 sm:bottom-14 lg:bottom-55 bg-white rounded-[18px] sm:rounded-[20px] p-3 sm:p-4 lg:p-[18px] shadow-2xl border border-white/90 z-20 text-left transition-transform hover:-translate-y-1 duration-200 scale-90 sm:scale-100 origin-bottom-left">
           {/* Title */}
           <h3 className="text-sm sm:text-base lg:text-[17px] font-semibold text-shuttle-950 leading-tight">
             Happy Students
